@@ -1,37 +1,25 @@
 <template>
-  <v-container class="black-bg">
+  <v-container>
     <v-row class="text-center">
       <v-col cols="12">
-        <v-img
-          :src="require('../assets/logo.svg')"
-          class="my-3"
-          contain
-          height="200"
-        />
+        <v-img :src="require('../assets/logo.gif')" class="mt-3" contain height="500"/>
       </v-col>
-
       <v-col class="mb-4">
-        <h1 class="display-2 font-weight-bold mb-3">
-          Welcome to Vuetify
+        <h1 class="display-2 font-weight-bold mb-3 light-text">
+          Crafting Helper
         </h1>
-
-        <p class="subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-          <br>please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
+        <p class="subheading font-weight-regular light-text">
+          Made by RoyalCanary, with logo by ElsaMouse.
         </p>
       </v-col>
     </v-row>
 
-    <v-row>
+    <v-row class="light-bg">
       <v-col cols="8" offset="2">
-        <p>Do not put commas or other characters in any of the fields, only numbers</p>
+        <p>No commas or other characters in any of the fields please! Numbers only.</p>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row class="light-bg">
       <v-col cols="4" offset="2">
         <v-text-field label="A" v-model="a"/>
         <v-text-field label="B" v-model="b"/>
@@ -47,7 +35,7 @@
         <v-text-field label="Boost multiplier" v-model="boostMultiplier"/>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row class="light-bg">
       <v-col cols="10" offset="1">
         Star goal: {{goalStars}}
         <v-slider 
@@ -60,7 +48,7 @@
         ></v-slider>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row class="light-bg">
       <v-col cols="4" offset="2">
         <p>Numbers to do per batch</p>
         <p>A: {{aPerBatch}}</p>
@@ -199,3 +187,12 @@
     }
   }
 </script>
+
+<style scoped>
+.light-bg {
+  background-color: #eeeeee;
+}
+.light-text {
+  color: white;
+}
+</style>
