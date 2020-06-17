@@ -58,10 +58,10 @@
         <p>E: {{ePerBatch}}</p>
       </v-col>
       <v-col cols="4">
-        <p>Craft Cost: {{craftCost}}</p>
-        <p>Star Cost: {{starCost}}</p>
-        <p>Total Tokens Required: {{tokensRequiredForGoal}}</p>
-        <p>Remaining Tokens: {{spareTokens}}</p>
+        <p>Craft Cost: {{craftCost.toLocaleString()}}</p>
+        <p>Star Cost: {{starCost.toLocaleString()}}</p>
+        <p>Total Tokens Required: {{tokensRequiredForGoal.toLocaleString()}}</p>
+        <p>Remaining Tokens: {{spareTokens.toLocaleString()}}</p>
         <h4 v-if="spareTokens < 200000 && spareTokens >= 0" class="orange--text">Watch your tokens</h4>
         <h3 v-if="spareTokens < 0" class="red--text">NOT ENOUGH TOKENS</h3>
       </v-col>
@@ -140,6 +140,9 @@
         let aRequiredTotal = parseInt(this.goalStars) * 7/3;
         let aToMake = aRequiredTotal - this.aUsed - parseInt(this.a);
         if (aToMake < 1) {
+          return 0;
+        }
+        if (aToMake < this.batchesLeft) {
           return 1;
         }
         return Math.floor(aToMake / this.batchesLeft);
@@ -148,6 +151,9 @@
         let bRequiredTotal = parseInt(this.goalStars) * 9/3;
         let bToMake = bRequiredTotal - this.bUsed - parseInt(this.b);
         if (bToMake < 1) {
+          return 0;
+        }
+        if (bToMake < this.batchesLeft) {
           return 1;
         }
         return Math.floor(bToMake / this.batchesLeft);
@@ -156,6 +162,9 @@
         let cRequiredTotal = parseInt(this.goalStars) * 9/3;
         let cToMake = cRequiredTotal - this.cUsed - parseInt(this.c);
         if (cToMake < 1) {
+          return 0;
+        }
+        if (cToMake < this.batchesLeft) {
           return 1;
         }
         return Math.floor(cToMake / this.batchesLeft);
@@ -164,6 +173,9 @@
         let dRequiredTotal = parseInt(this.goalStars) * 2/3;
         let dToMake = dRequiredTotal - this.dUsed - parseInt(this.d);
         if (dToMake < 1) {
+          return 0;
+        }
+        if (dToMake < this.batchesLeft) {
           return 1;
         }
         return Math.floor(dToMake / this.batchesLeft);
@@ -172,6 +184,9 @@
         let eRequiredTotal = parseInt(this.goalStars) * 1/3;
         let eToMake = eRequiredTotal - this.eUsed - parseInt(this.e);
         if (eToMake < 1) {
+          return 0;
+        }
+        if (eToMake < this.batchesLeft) {
           return 1;
         }
         return Math.floor(eToMake * 2 / this.batchesLeft);
@@ -193,6 +208,6 @@
   background-color: #eeeeee;
 }
 .light-text {
-  color: white;
+  color: #eeeeee;
 }
 </style>
